@@ -1,0 +1,39 @@
+#!/bin/bash
+
+echo -e "\033[1;31m
+━━━━━━━━━━━━━━━━━━━━━━┏┓━
+━━━━━━━━━━━━━━━━━━━━━┏┛┗┓
+┏━━┓┏━━┓┏━━┓┏━┓┏┓┏━━┓┗┓┏┛
+┃━━┫┃━━┫┃┏━┛┃┏┛┣┫┃┏┓┃━┃┃━
+┣━━┃┣━━┃┃┗━┓┃┃━┃┃┃┗┛┃━┃┗┓
+┗━━┛┗━━┛┗━━┛┗┛━┗┛┃┏━┛━┗━┛
+━━━━━━━━━━━━━━━━━┃┃━━━━━━
+━━━━━━━━━━━━━━━━━┗┛━━━━━━
+\033[0m"
+
+function os() {
+	#deftect package manager
+	if [[ -f /usr/bin/apt && "${!command-v python3 pip3 acpi}" ]]; then
+		echo -e "\033[1;34m Debian Based OS Detected \033[0m"
+		sudo apt install python3 python3-pip acpi -y
+	elif [[ -f /usr/bin/pacman ]]; then
+		echo -e "\033[1;34m Arch Based OS Detected \033[0m"
+		sudo pacman -S python python-pip acpi
+	fi
+}
+
+function pyreq() {
+	echo -e "\033[1;31m
+    ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+       \n\t\t\033[0m\033[1;32m Installing Python Requirements \033[0m\033[1;31m\n
+    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+    \033[0m"
+	pip3 install -r requirements.txt
+}
+
+function main() {
+	os
+	pyreq
+}
+
+main
